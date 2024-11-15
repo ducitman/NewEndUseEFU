@@ -1,0 +1,447 @@
+﻿/*共通*/
+body, span, input, select, textarea {
+    font-size: 16pt;
+}
+
+form {
+    margin: 0px;
+}
+
+div.frame {
+    width: 460px;
+    height: 550px;
+    position: relative;
+}
+
+div.Commonheader {
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+div.HeaderTitle {
+    background-color: lightblue;
+    width: 460px;
+    height: 50px;
+}
+
+div.Message {
+    padding-left: 10px;
+    width: 100%;
+}
+
+    div.Message textarea {
+        border: solid 1px #808080;
+        width: 95%;
+    }
+
+div.title {
+    position: absolute;
+    top: 0px;
+    background-color: aqua;
+    width: 100%;
+    height: 50px;
+}
+
+span.titleText {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+}
+
+/*メニュー画面画面*/
+div.MenuBody {
+    padding-top: 20px;
+    text-align: center;
+    height: 280px;
+}
+
+    div.MenuBody input {
+        background-color: #eee;
+        margin-bottom: 40px;
+        width: 350px;
+    }
+
+div.switch input {
+    margin: 15px;
+    width: 50px;
+    height: 50px;
+}
+
+/*照合画面*/
+div.divBody span.cResult {
+    border: solid 1px #000000;
+    font-size: 24pt;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: inline-block;
+    width: 50px;
+    height: 45px;
+    vertical-align: middle;
+}
+
+div.divBody input.Button {
+    background-color: #eee;
+}
+.button150 {
+    width: 150px;
+}
+div.divBody div.Message {
+    padding-left: 10px;
+    width: 100%;
+}
+
+    div.divBody div.Message textarea {
+        border: solid 1px #808080;
+        width: 95%;
+    }
+
+
+/*タイヤバーコード登録画面*/
+div.RegistTireBarcodeBody span.RegistResult {
+    border: solid 1px #000000;
+    font-size: 24pt;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: block;
+    width: 50px;
+    height: 36px;
+}
+
+div.RegistTireBarcodeBody input.Button {
+    width: 100px;
+}
+
+div.RegistTireBarcodeBody div.Message {
+    padding-left: 10px;
+    width: 100%;
+}
+
+    div.RegistTireBarcodeBody div.Message textarea {
+        border: solid 1px #808080;
+        width: 95%;
+    }
+
+/*GT在庫修正画面*/
+div.EditGTInventoryBody span.RegisterResult {
+    border: solid 1px #000000;
+    font-size: 24pt;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: block;
+    width: 50px;
+    height: 36px;
+}
+
+div.EditGTInventoryBody input.Button {
+    width: 100px;
+}
+
+div.EditGTInventoryBody div.Message {
+    padding-left: 10px;
+    width: 100%;
+}
+
+    div.EditGTInventoryBody div.Message textarea {
+        border: solid 1px #808080;
+        width: 95%;
+    }
+
+/*在庫修正画面*/
+div.EditMaterialInventoryBody input.Button {
+    width: 100px;
+}
+
+div.EditMaterialInventoryBody div.Message {
+    padding-left: 10px;
+    width: 100%;
+}
+
+    div.EditMaterialInventoryBody div.Message textarea {
+        border: solid 1px #808080;
+        width: 80%;
+    }
+
+/*空台車セット画面*/
+div.SetEmptyCartBody span.Result {
+    border: solid 1px #000000;
+    font-size: 24pt;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: block;
+    width: 50px;
+    height: 36px;
+}
+
+div.SetEmptyCartBody input.Button {
+    width: 100px;
+}
+
+div.SetEmptyCartBody div.Message {
+    padding-left: 10px;
+    width: 100%;
+}
+
+    div.SetEmptyCartBody div.Message textarea {
+        border: solid 1px #808080;
+        width: 95%;
+        height: 180px;
+    }
+
+/*手動在庫登録*/
+div.ManualInputBody div.container {
+    position: relative;
+    height: 33px;
+}
+
+div.ManualInputBody div.left {
+    position: absolute;
+    left: 8px;
+    bottom: 2px;
+}
+
+div.ManualInputBody div.right {
+    position: absolute;
+    right: 8px;
+    bottom: 2px;
+}
+
+div.ManualInputBody button {
+    width: 100px;
+}
+
+div.ManualInputBody div.list {
+    margin-top: 2px;
+    width: 100%;
+}
+
+    div.ManualInputBody div.list table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14pt;
+    }
+
+        div.ManualInputBody div.list table .disable {
+            background-color: #DEB985;
+        }
+
+    div.ManualInputBody div.list th {
+        padding: 4px;
+        vertical-align: top;
+        color: #333;
+        background-color: #FFFF00;
+        border: 1px solid #b9b9b9;
+        font-weight: 400;
+    }
+
+    div.ManualInputBody div.list td {
+        padding: 4px;
+        background-color: #fff;
+        border: 1px solid #b9b9b9;
+    }
+
+div.ManualInputBody div.center {
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+div.ManualInputBody input {
+    ime-mode: disabled;
+}
+
+div.ManualInputBody div.ko-grid-pageLinks .selected {
+    font-weight: bold;
+    color: blue;
+}
+
+div.ManualInputBody div.ko-grid-pageLinks a {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/*手動在庫紐付*/
+div.ManualRelationBody div.container {
+    position: relative;
+    height: 33px;
+}
+
+div.ManualRelationBody div.left {
+    position: absolute;
+    left: 8px;
+    bottom: 2px;
+}
+
+div.ManualRelationBody div.right {
+    position: absolute;
+    right: 8px;
+    bottom: 2px;
+}
+
+div.ManualRelationBody button {
+    width: 100px;
+}
+
+div.ManualRelationBody div.list {
+    margin-top: 2px;
+    width: 100%;
+}
+
+    div.ManualRelationBody div.list table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14pt;
+    }
+
+        div.ManualRelationBody div.list table .disable {
+            background-color: #C0C0C0;
+        }
+
+    div.ManualRelationBody div.list th {
+        padding: 4px;
+        vertical-align: top;
+        color: #333;
+        background-color: #00FFFF;
+        border: 1px solid #b9b9b9;
+        font-weight: 400;
+    }
+
+    div.ManualRelationBody div.list td {
+        padding: 4px;
+        background-color: #fff;
+        border: 1px solid #b9b9b9;
+    }
+
+div.ManualRelationBody input {
+    ime-mode: disabled;
+}
+
+div.ManualRelationBody div.ko-grid-pageLinks .selected {
+    font-weight: bold;
+    color: blue;
+}
+
+div.ManualRelationBody div.ko-grid-pageLinks a {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+/*エラー画面*/
+div.ErrorHeader {
+    padding-top: 100px;
+    height: 200px;
+}
+
+div.ErrorBody {
+    height: 100px;
+}
+
+    div.ErrorBody div.Message {
+        padding-left: 10px;
+        width: 100%;
+    }
+
+        div.ErrorBody div.Message textarea {
+            border: solid 1px #808080;
+            width: 95%;
+        }
+
+div.ErrorFooter {
+    text-align: right;
+    padding-right: 10px;
+}
+
+/*部材・ゴム残調画面*/
+div.CheckInventoryBody span.RegisterResult {
+    border: solid 1px #000000;
+    font-size: 24pt;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: block;
+    width: 50px;
+    height: 36px;
+}
+
+div.CheckInventoryBody input.Button {
+    width: 100px;
+}
+
+div.CheckInventoryBody div.Message {
+    padding-left: 10px;
+    width: 100%;
+}
+
+    div.CheckInventoryBody div.Message textarea {
+        border: solid 1px #808080;
+        width: 95%;
+    }
+
+/*ゴムパレットマスタ画面*/
+div.RegistPaletteMasterBody span.RegisterResult {
+    border: solid 1px #000000;
+    font-size: 24pt;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: block;
+    width: 50px;
+    height: 36px;
+}
+
+div.RegistPaletteMasterBody input.Button {
+    width: 100px;
+}
+
+div.RegistPaletteMasterBody div.Message {
+    padding-left: 10px;
+    width: 100%;
+}
+
+    div.RegistPaletteMasterBody div.Message textarea {
+        border: solid 1px #808080;
+        width: 95%;
+    }
+
+/*ゴムパレット紐付登録画面*/
+div.RegistPaletteRelationBody span.RegisterResult {
+    border: solid 1px #000000;
+    font-size: 24pt;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: block;
+    width: 50px;
+    height: 36px;
+}
+
+div.RegistPaletteRelationBody input.Button {
+    width: 100px;
+}
+
+div.RegistPaletteRelationBody div.Message {
+    padding-left: 10px;
+    width: 100%;
+}
+
+    div.RegistPaletteRelationBody div.Message textarea {
+        border: solid 1px #808080;
+        width: 95%;
+    }
+
+td, th {
+    padding: 2px;
+}
+
+.border-table,
+.border-table th,
+.border-table td {
+    border: solid 1px black;
+}

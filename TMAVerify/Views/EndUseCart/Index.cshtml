@@ -1,0 +1,232 @@
+﻿@{
+    ViewBag.Title = "End Use EFU 2024";
+}
+<div class="Commonheader">
+    <div class="HeaderTitle">
+        <span class="titleText" style="text-align:center;">End Use EFU</span>
+    </div>
+</div>
+<form>
+    <div class="frame">
+        <div class="divBody">
+            <table style="width: 100%;">
+                <tbody>
+                    <tr style="height: 60px;">
+                        <td style="width: 45%; text-align: right; padding-right: 5px;">Ma OP:</td>
+                        <td style="width: 25%;">
+                            <input type="password" id="txtOperatorId" maxlength="8" size="8" onkeydown="return CheckOperator()">
+                        </td>
+                        <td style="width: 30%;">
+                            &nbsp;<input type="button" id="btnRelease" class="Button" value="Nhap lai" onclick="ReleaseView()">
+                        </td>
+                    </tr>
+                    <tr style="height: 60px;">
+                        <td style="text-align: right; padding-right: 5px;">EFU:</td>
+                        <td colspan="2">
+                            <input disabled="" type="text" id="txtEf" size="19" style="ime-mode: disabled" onkeydown="return RegisterCartBefore()">
+                        </td>
+                    </tr>
+                    <tr style="height: 60px;">
+                        <td style="text-align: right; padding-right: 5px;">Ket qua:</td>
+                        <td>
+                            <span style="width: 70px;" id="lblResult" class="cResult"></span>
+                        </td>
+                    </tr>
+                    <tr style="height: 60px;">
+                        <td colspan=3>
+                            <input type="button" id="btnMenu" class="Button" value="Menu" onclick="Menu()" style="width:100px;">
+                            <input type="button" id="btnClear" class="Button" value="Lam Moi" onclick="Clear()" style="width:100px;">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="Message" style="margin-top: 10px;">
+                <textarea readonly="" rows="2" id="txtMessage" style="position:absolute;z-index:2;height: 220px;overflow-x: hidden;"></textarea>
+            </div>
+        </div>
+    </div>
+</form>
+<script type="text/javascript">
+    
+    var Menu = function () {
+        window.location = '@Url.Action("Index", "Home")';
+    };
+
+    //Kiểm tra xác minh
+    function CheckOperator() {
+        if (!event.keyCode || (event.keyCode != 13 && event.keyCode != 9)) {
+            return;
+        }
+        //Kiểm tra giá trị đã nhập chưa
+        var operatorId = $.trim(document.getElementById("txtOperatorId").value);
+        if (operatorId == '') {
+            document.getElementById('txtMessage').value = 'Hay nhap ma nguoi dung';
+            document.getElementById('txtOperatorId').focus();
+            return false;
+        }
+        //Xác minh mã người dùng
+        $.ajax({
+            type: "GET",
+            cache: false,
+            async: false,
+            url: '@Url.Action("CheckOP", "Home")?operatorId=' + operatorId + '&programName=BTMVAPP003&functionName=EndUseCartTMA',
+            dataType: "text",
+            success: CheckOperatorAfter,
+            error: AjaxErrorAfter
+        });
+
+        return false;
+    }
+    //Xử lý giao diện sau khi xác minh mã người dùng
+    var CheckOperatorAfter = function (data) {
+        var parameter = data.split("#");
+        var result = parameter[0];
+        var message = parameter[1];
+        if (result == 'OK') {
+            document.getElementById('txtMessage').value = 'Hay nhap TMA EFU';
+            document.getElementById('txtOperatorId').disabled = true;
+            document.getElementById("btnClear").disabled = false;
+            document.getElementById('btnClear').style.color = 'Black';
+            document.getElementById('txtOperatorId').style.backgroundColor = 'Gainsboro';
+            document.getElementById('txtEf').disabled = false;
+            document.getElementById('txtEf').style.backgroundColor = 'White';
+            document.getElementById('txtEf').focus();
+            return;
+        } else {
+            ReleaseView();
+            document.getElementById('txtMessage').value = message;
+            return false;
+        }
+    }
+    
+    //Lỗi khi đăng nhập
+    var AjaxErrorAfter = function () {
+        ReleaseView();
+        document.getElementById('txtMessage').value = 'Dang nhap that bai';
+    }
+
+    //Làm mới giao diện
+    var ReleaseView = function () {
+        document.getElementById('lblResult').innerText = '';
+        document.getElementById('txtMessage').value = '';
+
+        document.getElementById('txtEf').value = '';
+        document.getElementById('txtEf').disabled = true;
+        document.getElementById('txtEf').style.backgroundColor = 'Gainsboro';
+        
+        document.getElementById('btnClear').style.color = '#ccc';
+        document.getElementById("btnClear").disabled = true;
+
+        document.getElementById('txtOperatorId').style.backgroundColor = 'White';
+        document.getElementById('txtOperatorId').disabled = false;
+        document.getElementById('txtOperatorId').value = '';
+        document.getElementById("txtOperatorId").focus();
+        document.getElementById('txtOperatorId').select();
+        SetStyleResultOK();
+    };
+    
+    //Clear
+    var Clear = function () {
+        document.getElementById('lblResult').innerText = '';
+        document.getElementById('txtMessage').value = '';
+        
+        document.getElementById('txtEf').disabled = false;
+        document.getElementById('txtOperatorId').disabled = true;
+        document.getElementById('txtOperatorId').style.backgroundColor = 'Gainsboro';
+        document.getElementById('txtEf').style.backgroundColor = 'White';
+        document.getElementById('txtEf').value = '';
+        document.getElementById('txtEf').focus();
+        document.getElementById('txtEf').select();
+        SetStyleResultOK();
+    };
+
+    var Continue = function () {
+        document.getElementById('txtEf').disabled = false;
+        document.getElementById('txtOperatorId').disabled = true;
+        document.getElementById('txtOperatorId').style.backgroundColor = 'Gainsboro';
+        document.getElementById('txtEf').style.backgroundColor = 'White';
+        document.getElementById('txtEf').value = '';
+        document.getElementById('txtEf').focus();
+        document.getElementById('txtEf').select();
+        SetStyleResultOK();
+    };
+
+    function SetStyleResultNG() {
+        document.getElementById('lblResult').style.backgroundColor = 'Red';
+    }
+
+    function SetStyleResultOK() {
+        document.getElementById('lblResult').style.backgroundColor = 'White';
+    }
+    
+    //Xử lý trước khi End Use Cart TMA
+    function RegisterCartBefore() {
+        if (!event.keyCode || (event.keyCode != 13 && event.keyCode != 9)) {
+            return;
+        }
+        
+        //Kiểm tra giá trị đã nhập chưa
+        var ef = document.getElementById('txtEf').value;
+        if (ef == '') {
+            document.getElementById('txtMessage').value = 'Hay nhap TMA EFU';
+            document.getElementById('txtEf').focus();
+            return false;
+        }
+
+        //Thông báo đang xử lý
+        document.getElementById('txtMessage').value = "Dang xu ly...";
+        setTimeout(RegisterCart, 10);
+    }
+
+    //End Use Cart TMA
+    function RegisterCart() {
+        document.getElementById('txtEf').disabled = true;
+        var operatorId = document.getElementById('txtOperatorId').value;
+        var ef = document.getElementById('txtEf').value;
+        ef = ef.replace('###', 'ZZZ');
+
+        $.ajax({
+            type: "GET",
+            cache: false,
+            async: false,
+            url: '@Url.Action("End_Use_Cart", "EndUseCart")?operatorId=' + operatorId + '&ef=' + ef,
+            dataType: "text",
+            success: SubmitAfter,
+            error: AjaxErrorSubmitAfter
+        });
+    }
+
+    //Xử lý sau khi End Use Cart TMA
+    var SubmitAfter = function (data) {
+        var parameter = data.split("#");
+
+        var result = parameter[0];
+        var message = parameter[1];
+
+        document.getElementById('lblResult').innerText = result;
+        document.getElementById('txtMessage').value = message;
+
+        if (result == 'NG') {
+            SetStyleResultNG();
+        } else {
+            Continue();
+        }
+
+        return false;
+    }
+
+    //Lỗi khi End Use Cart TMA
+    var AjaxErrorSubmitAfter = function (xhr) {
+        if (xhr.status == 999) {
+            document.getElementById('txtMessage').value = 'Khong the ket noi duoc voi may chu';
+        } else if (xhr.status == 500) {
+            document.getElementById('txtMessage').value = 'End Use Cart TMA that bai (ErrorCode: 500)';
+        };
+        document.getElementById('txtMessage').value = 'End Use Cart TMA that bai';
+    }
+
+    $(function () {
+        ReleaseView();
+    });
+</script>
+

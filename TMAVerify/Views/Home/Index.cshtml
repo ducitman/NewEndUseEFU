@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "End Use EFU";
+}
+<div class="Commonheader">
+    <div class="HeaderTitle">
+        <span class="titleText" style="text-align:center;">PRO 1 - MENU</span>
+    </div>
+</div>
+<form>
+    <div class="frame">
+        <table style="width: 100%;">
+            <tbody>
+                <tr>
+                    <td style="text-align: left">Version: 24.04.2023</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="MenuBody">
+
+            <input type="button" id="btnEndUseCart" class="Button" value="End Use Cart TMA" onclick="EndUseCart()"><br>
+
+        </div>
+    </div>
+</form>
+<script type="text/javascript">
+    //var maxPageCount = parseInt(2);
+
+    //$(document).ready(function () {
+
+    //    ChangePage(1);
+
+    //    if (1 == maxPageCount) {
+    //        document.getElementById('btnPage1').style.visibility = "hidden";
+    //    }
+    //});
+
+    //function ChangePage(index) {
+    //    for (i = 1; i <= maxPageCount; i++) {
+    //        document.getElementById('page' + i.toString()).style.display = 'none';
+    //        document.getElementById('btnPage' + i.toString()).disabled = false;
+    //    }
+
+    //    document.getElementById('page' + index.toString()).style.display = 'block';
+    //    document.getElementById('btnPage' + index.toString()).disabled = true;
+
+    //    var firstItem = pageFirstItemArray[index];
+    //    document.getElementById(firstItem).focus();
+    //}
+
+
+    var EndUseCart = function () {
+        window.location = '@Url.Action("Index", "EndUseCart")';
+    };
+
+</script>
+
+
+
